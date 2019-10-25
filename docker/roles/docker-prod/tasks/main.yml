@@ -1,0 +1,20 @@
+---
+
+- name: install reqs
+  yum:
+    name:
+      - device-mapper-persistent-data
+      - lvm2
+      - "{{docker_distrib}}"
+    state: present
+
+- name: enable docker
+  service: name=docker enabled=yes state=started
+
+- name: push docker-compose
+  copy:
+    src: ~/git/ansible/ansible/docker/roles/docker-prod/files/docker-compose
+    dest: /usr/bin/docker-compose
+    owner: root
+    group: root
+    mode: '0755'

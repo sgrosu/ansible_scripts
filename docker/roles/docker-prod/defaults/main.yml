@@ -1,0 +1,5 @@
+---
+docker_distrib: 'docker-ce'
+docker_compose_ver: '1.24.1'
+dc: "{{ docker-distrib }}---{{docker-compose-ver}}"
+docker-compose-url: https://github.com/docker/compose/releases/download/"{{ docker-compose-ver }}"/docker-compose-"{{ unames.stdout }}"-"{{ unamem.stdout }}"

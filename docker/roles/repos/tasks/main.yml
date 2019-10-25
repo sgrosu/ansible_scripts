@@ -1,0 +1,33 @@
+--- 
+- name: Delete existing repos
+  file:
+    state: "{{ item }}"
+    path: "/etc/yum.repos.d"
+  with_items:
+    - absent
+    - directory 
+
+- name: Centos Base
+  yum_repository:
+    name: centos
+    description: Centos base repo
+    baseurl: http://nexus/repository/centos7.6proxy-v2/os/$basearch
+
+- name: Centos Updates
+  yum_repository:
+    name: centos-updates
+    description: Centos Updates
+    baseurl: http://nexus/repository/centos7.6proxy-v2/updates/$basearch
+
+- name: Centos Extras
+  yum_repository:
+    name: centos-extras
+    description: Centos Extras
+    baseurl: http://nexus/repository/centos7.6proxy-v2/extras/$basearch
+
+- name: Docker Repo
+  yum_repository:
+    name: docker-repo
+    baseurl: http://nexus/repository/docker/centos/$releasever/$basearch/stable
+    description: Docker CE Repo
+    gpgcheck: no
