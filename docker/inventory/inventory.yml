@@ -1,5 +1,6 @@
 all:
   hosts:
-    srv1:
-      ansible_user: ansible
-      ansible_ssh_private_key_file: ~/keys/ansible_key
+    10.86.30.81:
+  vars:  
+    ansible_user: ansible
+    ansible_ssh_private_key_file: ~/keys/ansible_key

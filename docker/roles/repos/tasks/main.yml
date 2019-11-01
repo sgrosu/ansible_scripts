@@ -1,5 +1,5 @@
---- 
-- name: Delete existing repos
+---
+- name: Delete existing repo
   file:
     state: "{{ item }}"
     path: "/etc/yum.repos.d"
@@ -30,4 +30,39 @@
     name: docker-repo
     baseurl: http://nexus/repository/docker/centos/$releasever/$basearch/stable
     description: Docker CE Repo
-    gpgcheck: no
+
+- name: Epel
+  yum_repository:
+    name: epel
+    baseurl: http://nexus/repository/epel76freeze
+    description: Epel Freeze
+
+- name: Gitlab Runner
+  yum_repository:
+    name: gitlab-runner
+    baseurl: http://nexus/repository/gitlab-runner/el/$releasever/$basearch
+    description: Gitlab Runner repo
+
+- name: RPMFusionFree
+  yum_repository:
+    name: rpmfusion-free
+    baseurl: http://nexus/repository/rpmfusion-free/$releasever/$basearch
+    description: RpmFusion Free repo
+
+- name: RPMFusionNonFree
+  yum_repository:
+    name: rpmfusion-nonfree
+    baseurl: http://nexus/repository/rpmfusion-nonfree/$releasever/$basearch
+    description: RpmFusion NonFree repo
+
+- name: Iozone Repo
+  yum_repository:
+    name: iozone
+    baseurl: http://nexus/repository/saltrpm/iozone/$basearch
+    description: Iozone Repo
+
+- name: Zabbix Repo
+  yum_repository:
+    name: zabbix
+    baseurl: http://nexus/repository/zabbix42
+    description: Zabbix Repo
