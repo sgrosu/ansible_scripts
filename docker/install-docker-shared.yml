@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  roles:
+<<<<<<< HEAD:docker/install-docker-shared.yml
+    - docker-shared
+=======
+    - docker  
+>>>>>>> 73d44846856975b04c545542f7f1f5921f48bdf5:docker/install-docker.yml
